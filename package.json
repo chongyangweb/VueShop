@@ -1,0 +1,23 @@
+{
+  "name": "qwshop",
+  "version": "1.0.0",
+  "description": "My pioneering Nuxt.js project",
+  "author": "qingwu",
+  "private": true,
+  "scripts": {
+    "dev": "nuxt",
+    "build": "nuxt build",
+    "start": "nuxt start",
+    "generate": "nuxt generate"
+  },
+  "dependencies": {
+    "ant-design-vue": "^1.1.10",
+    "axios": "^0.18.0",
+    "china-location": "^1.0.4",
+    "cross-env": "^5.2.0",
+    "nuxt": "^2.6.3"
+  },
+  "devDependencies": {
+    "nodemon": "^1.18.9"
+  }
+}
