@@ -147,7 +147,7 @@
 				    <a-tab-pane tab="用户评价" key="2" forceRender>
 
 					<a-list itemLayout="vertical" :split='true' >
-						<a-list-item v-for="v in goods_comment">
+						<a-list-item :key="k" v-for="v,k in goods_comment">
 							<a-comment>
 								<a slot="author">{{v.get_user.nickname}}</a>
 							    <a-avatar
@@ -161,7 +161,7 @@
 							    </a-tooltip>
 
 							    <!-- 客服回復 -->
-							    <a-comment v-show="v.get_rec != null">
+							    <a-comment v-if="v.get_rec != null">
 							    	<a slot="author">店家小二</a>
 							    	<a-avatar
 								      src="/images/xiaoer.jpg"

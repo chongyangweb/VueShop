@@ -162,6 +162,8 @@
 					  
 					      <p style="margin:20px 0;">余额剩余：￥ <font color="#ca151e">{{user_extend.balance}}</font></p>
 					      <p><a-input v-model="pay_balance" placeholder="输入支付余额"/></p>
+					      <p v-if="is_wechat_pay==1 && pay_type==1"><vue-qr :text="wechatPay.code_url" :size="200"></vue-qr></p>
+					      <p v-if="is_wechat_pay==1 && pay_type==1" style="text-align: center;">微信扫描二维码支付</p>
 					      <div
 					        :style="{
 					          position: 'absolute',
@@ -238,6 +240,7 @@ import shop_header from '@/components/Common/shop_header.vue'
 import shop_othor_nav from '@/components/Common/shop_other_nav.vue'
 import shop_foot from '@/components/Common/shop_foot.vue'
 import mbx from '@/components/Common/mbx.vue'
+import vueQr from 'vue-qr'
 
 export default {
 	components: {
@@ -245,6 +248,7 @@ export default {
     	shop_othor_nav,
     	shop_foot,
     	mbx,
+    	vueQr,
     },
 	data(){
 		return{
@@ -272,6 +276,8 @@ export default {
 		    pay_balance:'',
 		    pay_type:'1',
 		    order_list:[],
+		    wechatPay:{},
+		    is_wechat_pay:0,
 		}
 	},
 	methods:{
@@ -334,6 +340,9 @@ export default {
 	    },
 	    onChange:function(e){
 	    	this.pay_type = e.target.value;
+	    	if(this.pay_type==2){
+	    		this.is_wechat_pay = 0;
+	    	}
 	    },
 	    start_pay:function(){
 	    	var _this = this;
@@ -360,6 +369,8 @@ export default {
 	    				}
 	    				// 如果是微信
 	    				if(_this.pay_type == 1){
+	    					_this.is_wechat_pay = 1;
+	    					_this.wechatPay = res;
 	    					console.log('暂时没有数据！');
 	    				}
 	    				

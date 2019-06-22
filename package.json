@@ -15,7 +15,8 @@
     "axios": "^0.18.0",
     "china-location": "^1.0.4",
     "cross-env": "^5.2.0",
-    "nuxt": "^2.6.3"
+    "nuxt": "^2.6.3",
+    "vue-qr": "^2.1.0"
   },
   "devDependencies": {
     "nodemon": "^1.18.9"
